@@ -23,7 +23,7 @@ let intervalObj = setInterval(() => {
 }, 6000);
 
 sendPOST = () => {
-	request('http://127.0.0.1:1909/selfRequest',
+	request('https://test1909.herokuapp.com/selfRequest',
 		function (error, response, body) {}
 	);
 };
