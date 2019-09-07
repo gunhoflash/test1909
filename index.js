@@ -1,5 +1,5 @@
 const express = require('express');
-const https = require('https');
+const request = require('request');
 const app = express();
 
 var server = require('http').createServer(app);
@@ -23,35 +23,13 @@ let intervalObj = setInterval(() => {
 }, 6000);
 
 sendPOST = () => {
-
-	const data = JSON.stringify({
-		hello: 'world'
-	});
-
-	const options = {
-		hostname: 'http://test1909.herokuapp.com',
-		port: 443,
-		path: '/selfRequest',
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'Content-Length': data.length
-		}
-	};
-
-	const req = https.request(options, (res) => {
-		console.log(`statusCode: ${res.statusCode}`)
-		res.on('data', process.stdout.write);
-	});
-
-	req.on('error', console.error);
-	req.write(data);
-	req.end();
+	request('http://127.0.0.1:1909/selfRequest',
+		function (error, response, body) {}
+	);
 };
 
-app.post('/selfRequest', (req, res) => {
+app.get('/selfRequest', (req, res) => {
 	console.log('/selfRequest');
-	console.log(req.body);
 	res.json({
 		hello: 'world'
 	});
