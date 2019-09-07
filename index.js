@@ -20,7 +20,7 @@ let i = 0;
 let intervalObj = setInterval(() => {
 	console.log(`interviewing the interval ${i++}`);
 	sendPOST();
-}, 6000);
+}, 60000);
 
 sendPOST = () => {
 	request('https://test1909.herokuapp.com/selfRequest',
